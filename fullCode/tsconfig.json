@@ -18,6 +18,7 @@
 
     "baseUrl": ".",
     "paths": {
+      "lib/*": ["./src/lib/*"],
       "contexts/*": ["./src/contexts/*"],
       "components/*": ["./src/components/*"],
       "imgs/*": ["./src/assets/imgs/*"],

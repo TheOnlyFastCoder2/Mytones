@@ -1,28 +1,47 @@
 import icon_search  from 'imgs/icons/search.svg';
-import React, {useEffect, useRef } from 'react';
+import React, {useEffect, useRef, useState } from 'react';
+import api from '../../lib/api';
+import IHit from 'src/lib/api/dto/Hit.dto';
+
 
 type Details = HTMLDetailsElement;
 type Input = HTMLInputElement;
 
+interface EditedHit {
+  url: string,
+  srcImg: string,
+  fullTitle: string,
+  title: string,
+  key: string,
+}
 
 
 export default function () {
   const refInput = useRef(null);
   const refDetails = useRef(null);
+  const [hits,setHits] = useState<EditedHit[]>([]);
 
   function searcher({key, target}: React.KeyboardEvent<HTMLInputElement>) {
       const input = target as HTMLInputElement;
 
-      // if(key === "Enter") {
-      //     searchArtist(input.value)
-      //     .then( (artist) => {
-      //         const {hits} = artist;
-      //         console.log(artist)
-      //         hits.map( ({result}) => {
-      //           console.log(result)
-      //       })
-      //     })
-      // }
+      if(key === "Enter") {
+        api.searchArtist (input.value)
+        .then( (hits: IHit[]) => {
+            const newState:EditedHit[] = [];
+
+            hits.forEach(({result}) => {
+              newState.push({
+                url: result.url,
+                srcImg: result.header_image_thumbnail_url,
+                fullTitle: result.full_title,
+                title: result.title,
+                key: result.full_title,
+              })
+            })
+
+            setHits(newState);
+        })
+      }
   }
 
   function toggleDetals ({target}: MouseEvent) {
@@ -56,14 +75,27 @@ export default function () {
       <details ref={refDetails}>
         <summary></summary>
         <ul>
-          <li>sdsfsdfsdf</li>
-          <li>sdsfsdfsdf</li>
-          <li>sdsfsdfsdf</li>
-          <li>sdsfsdfsdf</li>
-          <li>sdsfsdfsdf</li>
+          {hits.map((data, i) => {
+            return <Hit {...data}/>
+          })}
         </ul>
         <div className="background"></div>
       </details>
     </div>
   ) 
+}
+
+function Hit({srcImg,fullTitle,title}: EditedHit) {
+  return (
+    <li className="Hit" key={srcImg}>
+        <div className="Hit_avatar">
+            <img src={srcImg} alt="" />
+        </div>
+        <h3 
+          className="Hit_title" 
+          title={fullTitle}>
+          {title}
+        </h3>
+    </li>
+  )
 }
