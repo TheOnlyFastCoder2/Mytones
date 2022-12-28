@@ -1,0 +1,145 @@
+.Main {
+  display: flex;
+
+  &_left {
+    width: 100%;
+    height: 100%;
+  }
+
+  &_right {
+    width: 392px;
+    height: 100%;
+    padding-top: 32px;
+    background-color: #FFFFFF;
+    border-top-left-radius: $radius_1;
+
+    .topPanel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding-left: 24px;
+      padding-right: 42px;
+      
+      h2 {
+        color: #24242E;
+        font-weight: 600;
+      }
+      h4 {
+        color: #787887;
+        font-weight: 400;
+      }
+    }
+
+    .tracks {
+      width: 100%;
+      height: 296px;
+
+      margin-top: 16px;
+      position: relative;
+      @extend %hideScrollBar;
+      border-bottom: 1px solid #E8E8FD;
+
+      // &::after {
+      //   content: "";
+      //   position: absolute;
+      //   bottom:0;
+      //   display: block;
+      //   width: 326px;
+
+      //   margin-left: 24px;
+      //   margin-right: 42px;
+      //   border: 1px solid #E8E8FD;
+      // }
+      
+      .Track {
+        display: flex;
+        align-items: center;
+        height: 74px;
+
+        padding-left: 24px;
+        padding-right: 42px;
+
+        &_num {
+          font-weight: 400;
+          margin-right: 15px;
+        }
+
+        .song {
+          display: flex;
+          align-items: center;
+          width: 100%;
+        
+          &_avatar {
+            min-height: 50px;
+            min-width: 50px;
+            margin-right: 8px;
+            border-radius: 10px;
+            background-color: #EBEBEB;
+          }
+
+          &_info {
+            width: 100%;
+
+            h3,h5 {
+              width: 90%;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow:ellipsis;
+              text-transform: capitalize;
+            }
+            h5 {
+              font-weight: 400;
+              line-height: 16px;
+              color: #4D4D56;
+            }
+
+          
+          }
+          span {
+            margin-right: 24px;
+          }
+        }
+      }
+    }
+
+    .player {
+      width: 392px;
+      margin: 0 auto;
+      background: red;
+      margin-top: 19px;
+      text-align: center;
+
+      display: none;
+      flex-direction: column;
+      align-items: center;
+
+      h2 {
+        font-weight: 500;
+        line-height: 22px;
+        color:#24242E;
+      }
+
+      &_picture {
+        height: 120px;
+        width: 200px;
+        border-radius: 18px;
+        background: #D6D6D6;
+        margin-top: 16px;
+        margin-bottom: 11px;
+      }
+
+      &_songName {
+        font-weight: 700;
+        color:#24242E;
+      }
+
+      &_teamName {
+        font-weight: 400;
+        line-height: 20px;
+        color:#4D4D56;
+      }
+    }
+
+  }
+}

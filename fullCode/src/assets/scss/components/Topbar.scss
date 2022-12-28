@@ -1,0 +1,203 @@
+.Topbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  width: 1180px;
+  height: 98px;
+  gap: 24px 0;
+  padding-left: 42px;  
+
+  .Menu {
+    display: flex;
+    gap: 0 26px;
+    width: 284px;
+    margin-right: 93px;
+
+    font-weight: 500;
+    line-height: 22px;
+    color: #4D4D56;
+    text-transform: capitalize;
+    
+    li {
+      width: 66px;
+      text-align: center;
+      &:hover, &.active {
+        @extend %activeItem;
+        font-weight: 600;
+      }
+    }
+
+    %activeItem {
+      position: relative;
+      color: #4343EF;
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: calc(50% - 6px);
+        
+        display: block;
+        height: 2px;
+        width: 12px;
+        border-radius: 6px;
+        background-color: #4343EF;
+      }
+    }
+  }
+
+  .Searcher {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    width: 400px;
+    height: 100%;
+    border-radius: 16px;
+
+    &_form  {
+      display: flex;
+      align-items: center;
+      position: absolute;
+
+      width: 100%;
+      height: 50px;
+      border-radius: 16px;
+      z-index: 4;
+      
+      input {
+        width: 100%;
+        height: 100%;
+        padding: 0 24px;
+        border-radius: 16px;
+        background: #F0F0F5;
+        outline: none;
+        border:none;
+        
+        &.active {
+          box-shadow: 0px 10px 10px $colorShadow;
+        }
+        
+        &::placeholder , & {
+          color: #787887;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 22px;
+        }
+      }
+
+      img {
+        position: absolute;
+        cursor: pointer;
+        right: 24px;
+      }
+    }
+
+    details {
+      width: 100%;
+      height: 100%;
+  
+      summary {display: none;}
+
+      .background {
+        position: absolute;
+        left:-170%;
+        top: 0;
+   
+
+        width: 1440px;
+        height: 900px;
+        background: rgba(0,0,0,0.06);
+
+      }
+      ul {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        z-index: 4;
+        border-top:0;
+        border-radius: $radius_2;
+        background-color: #F9F9FB;
+
+        display: flex;
+        flex-direction: column;
+        gap: 5px 0;
+        padding-top: 20px;
+        padding-bottom: 10px;
+
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 22px;
+
+        // border: 2px solid #4343EF;
+        box-shadow: -10px 10px 10px $colorShadow;
+        border-bottom-left-radius: $radius_2;
+        
+        li {
+          display: flex;
+          align-items: center;
+          padding-left: 24px;
+          height: 46px;
+          transition: height 0.5s;
+          text-transform: capitalize;
+          
+          &:hover {
+            font-size: 18px;
+          }
+          
+          &:not(:last-child) {
+            border-bottom: 0.1px solid $colorShadow_2;
+          }
+        }
+      }
+    }
+  }
+
+  .User {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 32px;
+  
+    svg {
+      cursor: pointer;
+      &:nth-child(2) {
+        margin-left: 32px;
+        margin-right: 42px;
+      }
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    &_avatar {
+      width: 42px;
+      height: 42px;
+      margin-right: 10px;
+      overflow: hidden;
+      border-radius: 50%;
+      background-color: #E6E6E6;
+      word-break: тро;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &_nickname {
+      width: 99px;
+      font-weight: 600;
+      line-height: 20px;
+      margin-right: 14px;
+      color: #24242E;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      text-transform: capitalize;
+    }
+  }
+}
