@@ -19,7 +19,7 @@
     "baseUrl": ".",
     "paths": {
       "lib/*": ["./src/lib/*"],
-      "contexts/*": ["./src/contexts/*"],
+      "store/*": ["./src/store/*"],
       "components/*": ["./src/components/*"],
       "imgs/*": ["./src/assets/imgs/*"],
     },

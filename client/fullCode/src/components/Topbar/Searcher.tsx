@@ -1,7 +1,7 @@
 import icon_search  from 'imgs/icons/search.svg';
 import React, {useEffect, useRef, useState } from 'react';
-import api from '../../lib/api';
-import IHit from 'src/lib/api/dto/Hit.dto';
+import api from '../../lib/api/genius';
+import IHit from 'lib/api/genius/dto/Hit.dto';
 
 
 type Details = HTMLDetailsElement;

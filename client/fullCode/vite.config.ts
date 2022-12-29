@@ -17,7 +17,7 @@ export default defineConfig({
     alias: {
       "lib": setPath("./src/lib"),
       "imgs": setPath("./src/assets/imgs"),
-      "contexts": setPath("./src/contexts"),
+      "store": setPath("./src/store"),
       "components": setPath("./src/components"),
     }
   }
